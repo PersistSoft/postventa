@@ -22,7 +22,7 @@ public class ProjectEntity extends BasePostgresEntity {
     @Column(name="name")
     private String name;
 
-    @Size(min = 10, max = 50, message = "The nit should be {min} y maximum {max} characters")
+    @Size(min = 5, max = 50, message = "The nit should be {min} y maximum {max} characters")
     @Column(name="address")
     private String address;
 

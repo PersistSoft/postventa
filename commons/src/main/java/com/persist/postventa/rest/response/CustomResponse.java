@@ -8,5 +8,5 @@ import lombok.Data;
 @Builder
 public class CustomResponse {
     private CodeResponseEnum code;
-    private Object  			message;
+    private Object message;
 }

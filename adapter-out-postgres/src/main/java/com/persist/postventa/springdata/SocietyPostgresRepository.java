@@ -1,6 +1,7 @@
 package com.persist.postventa.springdata;
 
 import com.persist.postventa.entity.generic.SocietyEntity;
+import com.persist.postventa.springdata.generic.GenericPostgresRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,10 @@
 package com.persist.postventa.ports.in;
 
-import com.persist.postventa.generic.SocietyDomain;
+import com.persist.postventa.generic.WarrantyDomain;
 
 import java.util.List;
 
 @FunctionalInterface
 public interface ListWarrantyUseCase {
-    List<SocietyDomain> findAll();
+    List<WarrantyDomain> findAll();
 }

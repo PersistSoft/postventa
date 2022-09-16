@@ -1,4 +1,4 @@
-package com.persist.postventa.springdata;
+package com.persist.postventa.springdata.generic;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

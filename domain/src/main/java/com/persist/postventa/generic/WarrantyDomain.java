@@ -17,5 +17,5 @@ import java.util.Date;
 public class WarrantyDomain extends BasicDomain {
     private ClientDomain client;
     private ApartmentDomain apartment;
-    private Date deliveryDate;
+    private Date creationDate;
 }

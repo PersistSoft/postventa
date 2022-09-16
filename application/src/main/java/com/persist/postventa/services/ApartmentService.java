@@ -11,6 +11,7 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
+@UseCase(value = "apartmentService")
 public class ApartmentService implements ListApartmentUseCase {
     private final ListApartmentPort listApartmentPort;
 

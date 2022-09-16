@@ -18,11 +18,11 @@ public class SocietyEntity extends BasePostgresEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min = 4, max = 120, message = "The name should be {min} y maximum {max} characters")
+    @Size(min = 4, max = 20, message = "The name should be {min} y maximum {max} characters")
     @Column(name="name")
     private String name;
 
-    @Size(min = 10, max = 15, message = "The nit should be {min} y maximum {max} characters")
+    @Size(min = 5, max = 10, message = "The nit should be {min} y maximum {max} characters")
     @Column(name="nit")
     private String nit;
 
