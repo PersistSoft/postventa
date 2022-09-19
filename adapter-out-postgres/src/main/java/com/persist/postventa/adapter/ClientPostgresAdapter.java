@@ -4,7 +4,7 @@ import com.persist.postventa.annotations.RDBMSPostgresAdapter;
 import com.persist.postventa.entity.generic.ClientEntity;
 import com.persist.postventa.generic.ClientDomain;
 import com.persist.postventa.mapper.ClientPostgresMapper;
-import com.persist.postventa.ports.out.ListClientPort;
+import com.persist.postventa.ports.out.client.ListClientPort;
 import com.persist.postventa.springdata.ClientPostgresRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

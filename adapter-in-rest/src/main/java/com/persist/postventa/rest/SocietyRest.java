@@ -4,9 +4,10 @@ import com.persist.postventa.annotations.WebAPIRESTAdaptar;
 import com.persist.postventa.commons.APIEndPointConst;
 import com.persist.postventa.commons.APIMessageConst;
 import com.persist.postventa.generic.SocietyDomain;
-import com.persist.postventa.ports.in.ListSocietyUseCase;
-import com.persist.postventa.ports.in.SaveSocietyUseCase;
-import com.persist.postventa.ports.in.commands.SocietyCommand;
+import com.persist.postventa.ports.in.society.FindSocietyByIdUseCase;
+import com.persist.postventa.ports.in.society.ListSocietyUseCase;
+import com.persist.postventa.ports.in.society.SaveSocietyUseCase;
+import com.persist.postventa.ports.in.society.SocietyCommand;
 import com.persist.postventa.rest.enums.CodeResponseEnum;
 import com.persist.postventa.rest.response.CustomResponse;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,7 @@ import static java.util.Objects.isNull;
 public class SocietyRest {
     private final ListSocietyUseCase listSocietyUseCase;
     private final SaveSocietyUseCase saveSocietyUseCase;
+    private final FindSocietyByIdUseCase findSocietyByIdUseCase;
 
     @GetMapping
     public ResponseEntity<?> findAll(){
@@ -53,6 +55,26 @@ public class SocietyRest {
         try {
 
             SocietyDomain society = this.saveSocietyUseCase.save(societyCommand);
+            return ResponseEntity.ok(society);
+
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(CustomResponse.builder().code(CodeResponseEnum.ERROR)
+                            .message(APIMessageConst.MSG_INTERNAL_SERVER_ERROR).build());
+        }
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findBbyId(@PathVariable Long id ){
+        try {
+
+            SocietyDomain society = this.findSocietyByIdUseCase.findById(id);
+
+            if(isNull(society)) {
+                return ResponseEntity.noContent().build();
+            }
+
             return ResponseEntity.ok(society);
 
         } catch (Exception e) {

@@ -4,7 +4,7 @@ import com.persist.postventa.annotations.RDBMSPostgresAdapter;
 import com.persist.postventa.entity.generic.WarrantyEntity;
 import com.persist.postventa.generic.WarrantyDomain;
 import com.persist.postventa.mapper.WarrantyPostgresMapper;
-import com.persist.postventa.ports.out.ListWarrantyPort;
+import com.persist.postventa.ports.out.warranty.ListWarrantyPort;
 import com.persist.postventa.springdata.WarrantyPostgresRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package com.persist.postventa.ports.in.commands;
+package com.persist.postventa.ports.in.society;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

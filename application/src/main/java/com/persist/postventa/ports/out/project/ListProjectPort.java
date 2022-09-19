@@ -1,10 +1,10 @@
-package com.persist.postventa.ports.in;
+package com.persist.postventa.ports.out.project;
 
 import com.persist.postventa.generic.ProjectDomain;
 
 import java.util.List;
 
 @FunctionalInterface
-public interface ListProjectUseCase {
+public interface ListProjectPort {
     List<ProjectDomain> findAll();
 }

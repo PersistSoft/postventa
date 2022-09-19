@@ -4,7 +4,7 @@ import com.persist.postventa.annotations.RDBMSPostgresAdapter;
 import com.persist.postventa.entity.generic.ApartmentEntity;
 import com.persist.postventa.generic.ApartmentDomain;
 import com.persist.postventa.mapper.ApartmentPostgresMapper;
-import com.persist.postventa.ports.out.ListApartmentPort;
+import com.persist.postventa.ports.out.apartment.ListApartmentPort;
 import com.persist.postventa.springdata.ApartmentPostgresRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

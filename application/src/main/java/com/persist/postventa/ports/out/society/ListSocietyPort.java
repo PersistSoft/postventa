@@ -1,10 +1,10 @@
-package com.persist.postventa.ports.in;
+package com.persist.postventa.ports.out.society;
 
 import com.persist.postventa.generic.SocietyDomain;
 
 import java.util.List;
 
 @FunctionalInterface
-public interface ListSocietyUseCase {
+public interface ListSocietyPort {
     List<SocietyDomain> findAll();
 }

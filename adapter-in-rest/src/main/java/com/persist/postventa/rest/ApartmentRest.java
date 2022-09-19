@@ -4,7 +4,7 @@ import com.persist.postventa.annotations.WebAPIRESTAdaptar;
 import com.persist.postventa.commons.APIEndPointConst;
 import com.persist.postventa.commons.APIMessageConst;
 import com.persist.postventa.generic.ApartmentDomain;
-import com.persist.postventa.ports.in.ListApartmentUseCase;
+import com.persist.postventa.ports.in.apartment.ListApartmentUseCase;
 import com.persist.postventa.rest.enums.CodeResponseEnum;
 import com.persist.postventa.rest.response.CustomResponse;
 import lombok.RequiredArgsConstructor;

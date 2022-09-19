@@ -1,7 +1,6 @@
-package com.persist.postventa.ports.in;
+package com.persist.postventa.ports.in.society;
 
 import com.persist.postventa.generic.SocietyDomain;
-import com.persist.postventa.ports.in.commands.SocietyCommand;
 
 @FunctionalInterface
 public interface SaveSocietyUseCase {

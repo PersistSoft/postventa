@@ -1,4 +1,4 @@
-package com.persist.postventa.ports.in;
+package com.persist.postventa.ports.in.warranty;
 
 import com.persist.postventa.generic.WarrantyDomain;
 

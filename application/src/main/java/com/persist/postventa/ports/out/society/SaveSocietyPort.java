@@ -1,4 +1,4 @@
-package com.persist.postventa.ports.out;
+package com.persist.postventa.ports.out.society;
 
 import com.persist.postventa.generic.SocietyDomain;
 

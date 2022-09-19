@@ -1,4 +1,4 @@
-package com.persist.postventa.ports.in;
+package com.persist.postventa.ports.in.apartment;
 
 import com.persist.postventa.generic.ApartmentDomain;
 
