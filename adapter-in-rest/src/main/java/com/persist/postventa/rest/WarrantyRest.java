@@ -3,17 +3,19 @@ package com.persist.postventa.rest;
 import com.persist.postventa.annotations.WebAPIRESTAdaptar;
 import com.persist.postventa.commons.APIEndPointConst;
 import com.persist.postventa.commons.APIMessageConst;
+import com.persist.postventa.generic.SocietyDomain;
 import com.persist.postventa.generic.WarrantyDomain;
+import com.persist.postventa.ports.in.society.SocietyCommand;
 import com.persist.postventa.ports.in.warranty.ListWarrantyUseCase;
+import com.persist.postventa.ports.in.warranty.SaveWarrantyUseCase;
+import com.persist.postventa.ports.in.warranty.WarrantyCommand;
 import com.persist.postventa.rest.enums.CodeResponseEnum;
 import com.persist.postventa.rest.response.CustomResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +28,7 @@ import static java.util.Objects.isNull;
 @RequestMapping(APIEndPointConst.API_WARRANTIES)
 public class WarrantyRest {
     private final ListWarrantyUseCase listWarrantyUseCase;
+    private final SaveWarrantyUseCase  saveWarrantyUseCase;
 
     @GetMapping
     public ResponseEntity<?> findAll(){
@@ -37,6 +40,22 @@ public class WarrantyRest {
             }
 
             return ResponseEntity.ok(warranties);
+
+        } catch (Exception e) {
+            log.error(e.getMessage(),e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(CustomResponse.builder().code(CodeResponseEnum.ERROR)
+                            .message(APIMessageConst.MSG_INTERNAL_SERVER_ERROR).build());
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody WarrantyCommand warrantyCommand){
+        log.info("{} save", warrantyCommand);
+        try {
+
+            WarrantyDomain warranty = this.saveWarrantyUseCase.save(warrantyCommand);
+            return ResponseEntity.ok(warranty);
 
         } catch (Exception e) {
             log.error(e.getMessage(),e);
