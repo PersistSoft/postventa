@@ -2,9 +2,11 @@ package com.persist.postventa.services;
 
 import com.persist.postventa.annotations.UseCase;
 import com.persist.postventa.generic.ClientDomain;
+import com.persist.postventa.ports.in.client.FindClientByIdUseCase;
 import com.persist.postventa.ports.in.client.ListClientUseCase;
 import com.persist.postventa.ports.in.client.SaveClientUseCase;
 import com.persist.postventa.ports.in.client.ClientCommand;
+import com.persist.postventa.ports.out.client.FindClientByIdPort;
 import com.persist.postventa.ports.out.client.ListClientPort;
 import com.persist.postventa.ports.out.client.SaveClientPort;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +17,9 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @UseCase(value = "clientService")
-public class ClientService implements ListClientUseCase, SaveClientUseCase {
+public class ClientService implements ListClientUseCase, SaveClientUseCase, FindClientByIdUseCase {
     private final ListClientPort listClientPort;
+    private final FindClientByIdPort findClientByIdPort;
     //private final SaveClientPort saveClientPort;
 
     @Override
@@ -33,5 +36,10 @@ public class ClientService implements ListClientUseCase, SaveClientUseCase {
                 .phone(clientCommand.getPhone())
                 .build();
         return null; //this.saveClientPort.save(clientDomain);
+    }
+
+    @Override
+    public ClientDomain findById(Long id) {
+        return this.findClientByIdPort.findById(id);
     }
 }
