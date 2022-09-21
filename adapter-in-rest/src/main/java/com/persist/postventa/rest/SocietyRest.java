@@ -67,21 +67,7 @@ public class SocietyRest {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findBbyId(@PathVariable Long id ){
-        try {
-
-            SocietyDomain society = this.findSocietyByIdUseCase.findById(id);
-
-            if(isNull(society)) {
-                return ResponseEntity.noContent().build();
-            }
-
-            return ResponseEntity.ok(society);
-
-        } catch (Exception e) {
-            log.error(e.getMessage(),e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(CustomResponse.builder().code(CodeResponseEnum.ERROR)
-                            .message(APIMessageConst.MSG_INTERNAL_SERVER_ERROR).build());
-        }
+        SocietyDomain society = this.findSocietyByIdUseCase.findById(id);
+        return ResponseEntity.ok(society);
     }
 }

@@ -49,21 +49,7 @@ public class ClientRest {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){
-        try {
-
-            ClientDomain client = this.findClientByIdUseCase.findById(id);
-
-            if(isNull(client)){
-                return ResponseEntity.noContent().build();
-            }
-
-            return ResponseEntity.ok(client);
-
-        } catch (Exception e) {
-            log.error(e.getMessage(),e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(CustomResponse.builder().code(CodeResponseEnum.ERROR)
-                            .message(APIMessageConst.MSG_INTERNAL_SERVER_ERROR).build());
-        }
+        ClientDomain client = this.findClientByIdUseCase.findById(id);
+        return ResponseEntity.ok(client);
     }
 }

@@ -1,6 +1,9 @@
 package com.persist.postventa.services;
 
 import com.persist.postventa.annotations.UseCase;
+import com.persist.postventa.exceptions.ClientNotFoundException;
+import com.persist.postventa.exceptions.SocietyNotFoundException;
+import com.persist.postventa.generic.ClientDomain;
 import com.persist.postventa.generic.SocietyDomain;
 import com.persist.postventa.ports.in.society.FindSocietyByIdUseCase;
 import com.persist.postventa.ports.in.society.ListSocietyUseCase;
@@ -13,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+
+import static java.util.Objects.isNull;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -38,6 +43,10 @@ public class SocietyService implements ListSocietyUseCase, SaveSocietyUseCase, F
 
     @Override
     public SocietyDomain findById(Long id) {
-        return this.findSocietyByIdPort.findById(id);
+        SocietyDomain society = this.findSocietyByIdPort.findById(id);
+        if(isNull(society)){
+            throw new SocietyNotFoundException(String.format("The Client with id %s not found", id));
+        }
+        return society;
     }
 }

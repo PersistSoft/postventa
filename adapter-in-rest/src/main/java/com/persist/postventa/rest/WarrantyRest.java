@@ -49,7 +49,6 @@ public class WarrantyRest {
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody WarrantyCommand warrantyCommand) {
-
         WarrantyDomain warranty = this.saveWarrantyUseCase.save(warrantyCommand);
         return ResponseEntity.ok(warranty);
     }

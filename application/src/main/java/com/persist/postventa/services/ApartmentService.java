@@ -1,6 +1,7 @@
 package com.persist.postventa.services;
 
 import com.persist.postventa.annotations.UseCase;
+import com.persist.postventa.exceptions.ApartmentNotFoundException;
 import com.persist.postventa.generic.ApartmentDomain;
 import com.persist.postventa.ports.in.apartment.FindApartmentByIdUseCase;
 import com.persist.postventa.ports.in.apartment.ListApartmentUseCase;
@@ -8,9 +9,9 @@ import com.persist.postventa.ports.in.apartment.SaveApartmentUseCase;
 import com.persist.postventa.ports.in.apartment.ApartmentCommand;
 import com.persist.postventa.ports.out.apartment.FindApartmentByIdPort;
 import com.persist.postventa.ports.out.apartment.ListApartmentPort;
-import com.persist.postventa.ports.out.apartment.SaveApartmentPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import static java.util.Objects.isNull;
 
 import java.util.List;
 
@@ -20,7 +21,6 @@ import java.util.List;
 public class ApartmentService implements ListApartmentUseCase, SaveApartmentUseCase, FindApartmentByIdUseCase {
     private final ListApartmentPort listApartmentPort;
     private final FindApartmentByIdPort findApartmentByIdPort;
-    //private final SaveApartmentPort saveApartmentPort;
 
     @Override
     public List<ApartmentDomain> findAll() {
@@ -34,11 +34,17 @@ public class ApartmentService implements ListApartmentUseCase, SaveApartmentUseC
                 .deliveryDate(apartmentCommand.getDeliveryDate())
                 .status(apartmentCommand.getStatus())
                 .build();
-        return null; //this.saveApartmentPort.save(apartment);
+        return null;
     }
 
     @Override
     public ApartmentDomain findById(Long id) {
-        return this.findApartmentByIdPort.findById(id);
+        ApartmentDomain apartment = this.findApartmentByIdPort.findById(id);
+
+        if(isNull(apartment)){
+            throw new ApartmentNotFoundException(String.format("The Apartment with id %s not found", id));
+        }
+
+        return apartment;
     }
 }
