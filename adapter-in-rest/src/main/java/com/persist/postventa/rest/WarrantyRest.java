@@ -3,9 +3,7 @@ package com.persist.postventa.rest;
 import com.persist.postventa.annotations.WebAPIRESTAdaptar;
 import com.persist.postventa.commons.APIEndPointConst;
 import com.persist.postventa.commons.APIMessageConst;
-import com.persist.postventa.generic.SocietyDomain;
 import com.persist.postventa.generic.WarrantyDomain;
-import com.persist.postventa.ports.in.society.SocietyCommand;
 import com.persist.postventa.ports.in.warranty.ListWarrantyUseCase;
 import com.persist.postventa.ports.in.warranty.SaveWarrantyUseCase;
 import com.persist.postventa.ports.in.warranty.WarrantyCommand;
@@ -42,7 +40,7 @@ public class WarrantyRest {
             return ResponseEntity.ok(warranties);
 
         } catch (Exception e) {
-            log.error(e.getMessage(),e);
+            log.error(e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(CustomResponse.builder().code(CodeResponseEnum.ERROR)
                             .message(APIMessageConst.MSG_INTERNAL_SERVER_ERROR).build());
@@ -50,18 +48,9 @@ public class WarrantyRest {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody WarrantyCommand warrantyCommand){
-        log.info("{} save", warrantyCommand);
-        try {
+    public ResponseEntity<?> save(@RequestBody WarrantyCommand warrantyCommand) {
 
-            WarrantyDomain warranty = this.saveWarrantyUseCase.save(warrantyCommand);
-            return ResponseEntity.ok(warranty);
-
-        } catch (Exception e) {
-            log.error(e.getMessage(),e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(CustomResponse.builder().code(CodeResponseEnum.ERROR)
-                            .message(APIMessageConst.MSG_INTERNAL_SERVER_ERROR).build());
-        }
+        WarrantyDomain warranty = this.saveWarrantyUseCase.save(warrantyCommand);
+        return ResponseEntity.ok(warranty);
     }
 }

@@ -1,6 +1,6 @@
 package com.persist.postventa.exceptions;
 
-public class ServiceException extends Exception{
+public class ServiceException extends RuntimeException {
     private static final long serialVersionUID = 8440664192412406524L;
 
     public ServiceException() {
