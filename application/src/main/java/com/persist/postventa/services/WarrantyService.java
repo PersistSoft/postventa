@@ -7,11 +7,13 @@ import com.persist.postventa.generic.ApartmentDomain;
 import com.persist.postventa.generic.ClientDomain;
 import com.persist.postventa.generic.WarrantyDomain;
 import com.persist.postventa.ports.in.warranty.ListWarrantyUseCase;
+import com.persist.postventa.ports.in.warranty.NewWarrantyEventUseCase;
 import com.persist.postventa.ports.in.warranty.SaveWarrantyUseCase;
 import com.persist.postventa.ports.in.warranty.WarrantyCommand;
 import com.persist.postventa.ports.out.apartment.FindApartmentByIdPort;
 import com.persist.postventa.ports.out.client.FindClientByIdPort;
 import com.persist.postventa.ports.out.warranty.ListWarrantyPort;
+import com.persist.postventa.ports.out.warranty.NewWarrantyEventPort;
 import com.persist.postventa.ports.out.warranty.SaveWarrantyPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,11 +26,12 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @UseCase(value = "warrantyService")
-public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase {
+public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase, NewWarrantyEventUseCase {
     private final ListWarrantyPort listWarrantyPort;
     private final SaveWarrantyPort saveWarrantyPort;
     private final FindClientByIdPort findClientByIdPort;
     private final FindApartmentByIdPort findApartmentByIdPort;
+    private final NewWarrantyEventPort newWarrantyEventPort;
 
     @Override
     public List<WarrantyDomain> findAll() {
@@ -68,10 +71,24 @@ public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase
                     .apartment(apartment)
                     .client(client)
                     .creationDate(new Date()).build();
+
             return this.saveWarrantyPort.save(warranty);
 
         } catch (Exception e) {
             throw new ServiceException("Internal server error saving warranty");
         }
     }
+
+    @Override
+    public WarrantyDomain newWarrantyEvent(WarrantyDomain warrantyDomain) {
+        return newWarrantyEventPort.newWarrantyEvent(warrantyDomain);
+    }
 }
+
+/*
+Los eventos se deben de implementar dentro de la logica de negocio, es decir en mi caso,
+    una vez generada la garantia, debe de lanzar el evento dentro de del metodo save, o bien desde la capa del adapter
+        rest
+ */
+
+

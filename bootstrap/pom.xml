@@ -47,6 +47,12 @@
             <artifactId>adapter-out-postgres</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.persist.postventa</groupId>
+            <artifactId>adapter-out-events</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 	<build>
 		<plugins>

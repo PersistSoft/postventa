@@ -4,6 +4,7 @@ import com.persist.postventa.entity.generic.ApartmentEntity;
 import com.persist.postventa.generic.ApartmentDomain;
 import com.persist.postventa.mapper.base.BaseMapper;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 

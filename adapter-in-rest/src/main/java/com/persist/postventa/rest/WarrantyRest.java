@@ -5,6 +5,7 @@ import com.persist.postventa.commons.APIEndPointConst;
 import com.persist.postventa.commons.APIMessageConst;
 import com.persist.postventa.generic.WarrantyDomain;
 import com.persist.postventa.ports.in.warranty.ListWarrantyUseCase;
+import com.persist.postventa.ports.in.warranty.NewWarrantyEventUseCase;
 import com.persist.postventa.ports.in.warranty.SaveWarrantyUseCase;
 import com.persist.postventa.ports.in.warranty.WarrantyCommand;
 import com.persist.postventa.rest.enums.CodeResponseEnum;
@@ -27,6 +28,7 @@ import static java.util.Objects.isNull;
 public class WarrantyRest {
     private final ListWarrantyUseCase listWarrantyUseCase;
     private final SaveWarrantyUseCase  saveWarrantyUseCase;
+    private final NewWarrantyEventUseCase newWarrantyEventUseCase;
 
     @GetMapping
     public ResponseEntity<?> findAll(){
@@ -50,6 +52,7 @@ public class WarrantyRest {
     @PostMapping
     public ResponseEntity<?> save(@RequestBody WarrantyCommand warrantyCommand) {
         WarrantyDomain warranty = this.saveWarrantyUseCase.save(warrantyCommand);
+        this.newWarrantyEventUseCase.newWarrantyEvent(warranty);
         return ResponseEntity.ok(warranty);
     }
 }
