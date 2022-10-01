@@ -33,6 +33,7 @@ public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase
     private final FindApartmentByIdPort findApartmentByIdPort;
     private final NewWarrantyEventPort newWarrantyEventPort;
 
+
     @Override
     public List<WarrantyDomain> findAll() {
         return this.listWarrantyPort.findAll();
@@ -72,6 +73,7 @@ public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase
                     .client(client)
                     .creationDate(new Date()).build();
 
+            this.newWarrantyEvent(warranty);
             return this.saveWarrantyPort.save(warranty);
 
         } catch (Exception e) {
@@ -84,11 +86,4 @@ public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase
         return newWarrantyEventPort.newWarrantyEvent(warrantyDomain);
     }
 }
-
-/*
-Los eventos se deben de implementar dentro de la logica de negocio, es decir en mi caso,
-    una vez generada la garantia, debe de lanzar el evento dentro de del metodo save, o bien desde la capa del adapter
-        rest
- */
-
 
