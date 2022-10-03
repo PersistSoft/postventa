@@ -10,7 +10,9 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ApartmentPostgresMapper extends BaseMapper<ApartmentEntity, ApartmentDomain> {
+    @Mapping(source = "id", target = "id")
     ApartmentDomain toDomain(ApartmentEntity e);
+    @Mapping(source = "id", target = "id")
     ApartmentEntity toEntity(ApartmentDomain D);
     List<ApartmentDomain> toDomains(List<ApartmentEntity> e);
     List<ApartmentEntity> toEntities(List<ApartmentDomain> d);

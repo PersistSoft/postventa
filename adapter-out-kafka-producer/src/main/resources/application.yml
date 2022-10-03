@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092 # cluster of kafka configured
+      key-serializer: org.apache.kafka.common.serialization.LongSerializer # The id of the objects
+      values-serializer: org.apache.kafka.common.serialization.StringSerializer # Payload of the messages will be string format
+      admin:
+        properties:
+          bootstrap.servers: localhost:9092 # cluster of kafka configured

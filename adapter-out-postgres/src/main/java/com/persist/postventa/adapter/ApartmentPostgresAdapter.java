@@ -32,7 +32,8 @@ public class ApartmentPostgresAdapter implements ListApartmentPort, FindApartmen
         Optional<ApartmentEntity> optApartment = this.apartmentPostgresRepository.findById(id);
 
         if(optApartment.isPresent()){
-            return this.apartmentPostgresMapper.toDomain(optApartment.get());
+            ApartmentDomain domain = this.apartmentPostgresMapper.toDomain(optApartment.get());
+            return domain;
         }
 
         return null;

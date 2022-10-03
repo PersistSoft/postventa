@@ -14,7 +14,7 @@
         <module>application</module>
         <module>adapter-in-rest</module>
         <module>commons</module>
-        <module>adapter-out-events</module>
+        <module>adapter-out-kafka-producer</module>
     </modules>
 
     <properties>
