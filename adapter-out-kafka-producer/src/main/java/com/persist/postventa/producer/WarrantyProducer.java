@@ -1,9 +1,7 @@
-package com.persist.postventa.events;
+package com.persist.postventa.producer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.persist.postventa.generic.WarrantyDomain;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.producer.ProducerRecord;
@@ -19,8 +17,8 @@ import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
-@Component(value = "warrantyEvents")
-public class WarrantyEvents {
+@Component(value = "warrantyProducer")
+public class WarrantyProducer {
     private final ObjectMapper mapper;
     private final KafkaTemplate<Long, String> kafkaTemplate;
     private String topic = "postventa-events";

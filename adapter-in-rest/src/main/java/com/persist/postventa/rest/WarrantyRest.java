@@ -5,7 +5,6 @@ import com.persist.postventa.commons.APIEndPointConst;
 import com.persist.postventa.commons.APIMessageConst;
 import com.persist.postventa.generic.WarrantyDomain;
 import com.persist.postventa.ports.in.warranty.ListWarrantyUseCase;
-import com.persist.postventa.ports.in.warranty.NewWarrantyEventUseCase;
 import com.persist.postventa.ports.in.warranty.SaveWarrantyUseCase;
 import com.persist.postventa.ports.in.warranty.WarrantyCommand;
 import com.persist.postventa.rest.enums.CodeResponseEnum;

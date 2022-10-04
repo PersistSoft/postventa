@@ -15,6 +15,7 @@
         <module>adapter-in-rest</module>
         <module>commons</module>
         <module>adapter-out-kafka-producer</module>
+        <module>adapter-out-kafka-consumer</module>
     </modules>
 
     <properties>

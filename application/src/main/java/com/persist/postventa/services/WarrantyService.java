@@ -6,14 +6,11 @@ import com.persist.postventa.exceptions.*;
 import com.persist.postventa.generic.ApartmentDomain;
 import com.persist.postventa.generic.ClientDomain;
 import com.persist.postventa.generic.WarrantyDomain;
-import com.persist.postventa.ports.in.warranty.ListWarrantyUseCase;
-import com.persist.postventa.ports.in.warranty.NewWarrantyEventUseCase;
-import com.persist.postventa.ports.in.warranty.SaveWarrantyUseCase;
-import com.persist.postventa.ports.in.warranty.WarrantyCommand;
+import com.persist.postventa.ports.in.warranty.*;
 import com.persist.postventa.ports.out.apartment.FindApartmentByIdPort;
 import com.persist.postventa.ports.out.client.FindClientByIdPort;
 import com.persist.postventa.ports.out.warranty.ListWarrantyPort;
-import com.persist.postventa.ports.out.warranty.NewWarrantyEventPort;
+import com.persist.postventa.ports.out.warranty.NewWarrantyProducerPort;
 import com.persist.postventa.ports.out.warranty.SaveWarrantyPort;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,12 +23,12 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @UseCase(value = "warrantyService")
-public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase, NewWarrantyEventUseCase {
+public class WarrantyService implements ListWarrantyUseCase, SaveWarrantyUseCase, NewWarrantyProducerUseCase {
     private final ListWarrantyPort listWarrantyPort;
     private final SaveWarrantyPort saveWarrantyPort;
     private final FindClientByIdPort findClientByIdPort;
     private final FindApartmentByIdPort findApartmentByIdPort;
-    private final NewWarrantyEventPort newWarrantyEventPort;
+    private final NewWarrantyProducerPort newWarrantyEventPort;
 
 
     @Override

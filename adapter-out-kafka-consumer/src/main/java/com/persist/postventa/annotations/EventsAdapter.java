@@ -11,5 +11,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface EventsAdapter {
     @AliasFor(annotation = Component.class)
-    String value() default "Kafka producer Adapter";
+    String value() default "Kafka consumer Adapter";
 }

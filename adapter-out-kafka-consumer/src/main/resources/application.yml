@@ -1,0 +1,6 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092 # cluster of kafka configured
+      key-deserializer: org.apache.kafka.common.serialization.LongDeserializer # The id of the objects
+      values-deserializer: org.apache.kafka.common.serialization.StringDeserializer # Payload of the messages will be string format
