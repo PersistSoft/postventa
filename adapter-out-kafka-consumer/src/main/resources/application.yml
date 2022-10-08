@@ -4,3 +4,14 @@ spring:
       bootstrap-servers: localhost:9092 # cluster of kafka configured
       key-deserializer: org.apache.kafka.common.serialization.LongDeserializer # The id of the objects
       values-deserializer: org.apache.kafka.common.serialization.StringDeserializer # Payload of the messages will be string format
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dditeh@gmail.com
+    password: ffqzvjgaxqflikmw
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

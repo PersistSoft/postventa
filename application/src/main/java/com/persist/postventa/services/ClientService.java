@@ -24,7 +24,6 @@ import static java.util.Objects.isNull;
 public class ClientService implements ListClientUseCase, SaveClientUseCase, FindClientByIdUseCase {
     private final ListClientPort listClientPort;
     private final FindClientByIdPort findClientByIdPort;
-    //private final SaveClientPort saveClientPort;
 
     @Override
     public List<ClientDomain> findAll() {

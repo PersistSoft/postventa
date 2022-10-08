@@ -9,7 +9,7 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface EventsAdapter {
+public @interface ConsumerAdapter {
     @AliasFor(annotation = Component.class)
     String value() default "Kafka consumer Adapter";
 }
